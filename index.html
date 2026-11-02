@@ -53,11 +53,11 @@
             </figure>
 
             <div class="subway-photo-pair">
-                <figure class="photo" data-scroll-image>
-                    <img src="./keepforward.jpg" alt="Passengers riding a subway car" loading="lazy" decoding="async">
+                <figure class="photo subway-car-photo" data-scroll-image>
+                    <img src="./updatedsubway.jpg" alt="Passengers riding a subway car" loading="lazy" decoding="async">
                 </figure>
 
-                <figure class="photo" data-scroll-image>
+                <figure class="photo subway-hand-photo" data-scroll-image>
                     <img src="./updated%20hand%20copy.jpg" alt="A hand resting on a seat inside a subway car" loading="lazy" decoding="async">
                 </figure>
             </div>
@@ -195,10 +195,6 @@
         if (crossStreet) {
             crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
         }
-
-        document.querySelectorAll('img[src=""]').forEach((img) => {
-            img.style.display = 'none';
-        });
     </script>
 </body>
 </html>
