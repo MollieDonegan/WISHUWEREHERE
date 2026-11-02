@@ -118,11 +118,11 @@
         </section>
 
         <section class="poem-credit" aria-label="Poem title and author">
-            <h2>
+            <h2 style="font-size: clamp(2.5rem, 5vw, 5.25rem);">
                 <span class="title-fragment title-fragment-first">Having a Coke</span>
                 <span class="title-fragment title-fragment-second">with You</span>
             </h2>
-            <p>Frank O’Hara</p>
+            <p style="font-size: clamp(1rem, 2vw, 1.6rem);">Frank O’Hara</p>
         </section>
 
         <section class="photo-sequence ending-sequence" aria-label="More photographs along the street">
@@ -198,6 +198,39 @@
 
         if (crossStreet) {
             crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
+        }
+
+        const poemCredit = document.querySelector(".poem-credit");
+        const poemTitle = poemCredit?.querySelector("h2");
+        const poemAuthor = poemCredit?.querySelector("p");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        if (poemCredit && poemTitle && poemAuthor && !reduceMotion) {
+            let updateQueued = false;
+
+            const updatePoemMotion = () => {
+                const bounds = poemCredit.getBoundingClientRect();
+                const progress = Math.max(0, Math.min(1,
+                    (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)
+                ));
+                const scale = 1 - progress * 0.35;
+                const moveDown = progress * 120;
+
+                poemTitle.style.transform = `translateY(${moveDown}px) scale(${scale})`;
+                poemAuthor.style.transform = `translateY(${moveDown}px) scale(${scale}) rotate(-1deg)`;
+                updateQueued = false;
+            };
+
+            const queuePoemMotionUpdate = () => {
+                if (!updateQueued) {
+                    updateQueued = true;
+                    window.requestAnimationFrame(updatePoemMotion);
+                }
+            };
+
+            window.addEventListener("scroll", queuePoemMotionUpdate, { passive: true });
+            window.addEventListener("resize", queuePoemMotionUpdate);
+            updatePoemMotion();
         }
     </script>
 </body>
