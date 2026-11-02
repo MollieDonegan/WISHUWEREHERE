@@ -1,0 +1,702 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background: #fff;
+    color: #252525;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.street {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #fff;
+}
+
+.background-arrows {
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.background-arrow {
+    position: absolute;
+    width: clamp(180px, 30vw, 460px);
+    height: auto;
+    overflow: visible;
+    fill: #111;
+    opacity: 0.12;
+}
+
+.arrow-one {
+    top: 8vh;
+    left: 3%;
+    transform: rotate(12deg);
+}
+
+.arrow-two {
+    top: 125vh;
+    right: 4%;
+    transform: rotate(174deg);
+}
+
+.arrow-three {
+    top: 245vh;
+    left: 7%;
+    transform: rotate(-12deg);
+}
+
+.arrow-four {
+    top: 360vh;
+    right: 8%;
+    transform: rotate(185deg);
+}
+
+.road-marking {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    bottom: 165px;
+    left: 44%;
+    width: 30px;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.road-marking::before,
+.road-marking::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 10px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #111 0,
+        #111 165px,
+        transparent 165px,
+        transparent 275px
+    );
+    content: "";
+}
+
+.road-marking::before {
+    left: 0;
+}
+
+.road-marking::after {
+    right: 0;
+}
+
+.opening,
+.photo-sequence,
+.crossroads {
+    position: relative;
+    z-index: 1;
+}
+
+.opening {
+    display: grid;
+    min-height: 100svh;
+    place-items: center;
+    padding: 8vh 5vw;
+}
+
+.opening-photo {
+    width: min(82vw, 1100px);
+    height: min(65vh, 760px);
+    min-height: 420px;
+    margin: 0;
+    --photo-rotation: 0deg;
+}
+
+.opening .opening-pondlife {
+    position: relative;
+    top: auto;
+    right: auto;
+    z-index: 1;
+    justify-self: end;
+    width: clamp(430px, 62vw, 860px);
+    height: clamp(300px, 48vh, 520px);
+    margin-top: 2vh;
+    margin-right: 0;
+    --photo-rotation: 1deg;
+}
+
+.photo {
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+    opacity: 1;
+    transform: translateY(0) rotate(var(--photo-rotation, 0deg));
+    transition: opacity 800ms ease, transform 800ms ease;
+}
+
+.has-scroll-reveal .photo {
+    opacity: 0;
+    transform: translateY(38px) rotate(var(--photo-rotation, 0deg));
+}
+
+.has-scroll-reveal .photo.is-visible {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--photo-rotation, 0deg));
+}
+
+.photo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    object-fit: contain;
+}
+
+.photo-sequence {
+    display: flow-root;
+    padding: 2.5vh 0 4vh;
+}
+
+.ending-sequence {
+    padding-bottom: 0;
+}
+
+.photo-one {
+    width: 35%;
+    height: 460px;
+    margin: 0 0 5vh 5%;
+    --photo-rotation: -1deg;
+}
+
+.photo-two {
+    width: 35%;
+    height: 560px;
+    margin: 0 5% 5vh auto;
+    --photo-rotation: 1.5deg;
+}
+
+.photo-three {
+    width: 35%;
+    height: 500px;
+    margin: 0 0 5vh 5%;
+    --photo-rotation: -1.5deg;
+}
+
+.photo-four {
+    width: 54%;
+    height: 560px;
+    margin: 0 11% 5vh auto;
+    --photo-rotation: 1deg;
+}
+
+.photo-five {
+    width: 35%;
+    height: 500px;
+    margin: 0 5% 4vh auto;
+    --photo-rotation: -2deg;
+}
+
+.crossroads {
+    min-height: 78svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3vh 0;
+}
+
+.crossroads::before {
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: min(58vh, 620px);
+    transform: translateY(-50%);
+    background-image:
+        repeating-linear-gradient(45deg, transparent 0 36px, #111 36px 42px),
+        repeating-linear-gradient(-45deg, transparent 0 36px, #111 36px 42px);
+    opacity: 0.65;
+    content: "";
+    pointer-events: none;
+}
+
+.cross-street:focus-visible {
+    outline: 3px solid #755f00;
+    outline-offset: 3px;
+}
+
+.cross-street {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 4vw, 3rem);
+    width: 100%;
+    height: min(55vh, 580px);
+    padding: 2rem 38vw;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #b49a00 #f1f1f1;
+    scrollbar-width: thin;
+    touch-action: pan-x pan-y;
+}
+
+.poem-credit {
+    position: relative;
+    z-index: 1;
+    padding: 2vh 4vw 4vh;
+}
+
+.poem-credit h2 {
+    display: grid;
+    grid-template-columns: 36% 44%;
+    justify-content: space-between;
+    margin: 0;
+    font-size: clamp(3rem, 6.2vw, 6.5rem);
+    font-weight: 700;
+    line-height: 0.9;
+    letter-spacing: -0.06em;
+}
+
+.title-fragment {
+    display: block;
+    max-width: 100%;
+}
+
+.title-fragment-first {
+    justify-self: start;
+    transform: rotate(-2deg);
+}
+
+.title-fragment-second {
+    justify-self: end;
+    margin-top: 1.5em;
+    transform: rotate(2deg);
+}
+
+.poem-credit p {
+    width: 44%;
+    margin: 0.5rem 4vw 0 auto;
+    font-size: clamp(1.25rem, 2.5vw, 2rem);
+    letter-spacing: 0.08em;
+    text-align: right;
+    text-transform: uppercase;
+    transform: rotate(-1deg);
+}
+
+.cross-street-spacer {
+    flex: 0 0 38vw;
+}
+
+.crossing-photo {
+    flex: 0 0 min(68vw, 760px);
+    width: min(68vw, 760px);
+    height: min(52vh, 560px);
+    scroll-snap-align: center;
+    --photo-rotation: 0deg;
+}
+
+.crossing-photo:nth-of-type(even) {
+    --photo-rotation: 1deg;
+}
+
+.crossing-photo:nth-of-type(odd) {
+    --photo-rotation: -1deg;
+}
+
+.photo-five,
+.crossing-photo:last-of-type {
+    margin-bottom: 0;
+}
+
+.floating-photo {
+    width: 35%;
+    height: 500px;
+    margin-bottom: 5vh;
+}
+
+.subway-photo-pair {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto 5vh;
+}
+
+.subway-photo-pair .photo {
+    width: 47%;
+    height: 460px;
+}
+
+.subway-photo-pair .photo:first-child {
+    width: 42%;
+    margin-left: -3%;
+}
+
+.street-photo-pair {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    margin: 0 auto 5vh;
+}
+
+.street-photo-pair .photo {
+    width: 42%;
+    aspect-ratio: 3 / 2;
+}
+
+.pink-spray-photo {
+    position: absolute;
+    z-index: 4;
+    left: 4%;
+    bottom: 3%;
+    width: 50.4%;
+    height: 720px;
+    --photo-rotation: 1deg;
+}
+
+.tissue-photo {
+    position: absolute;
+    z-index: 5;
+    left: 8%;
+    bottom: 70%;
+    width: 34%;
+    height: 24%;
+    --photo-rotation: -2deg;
+}
+
+.pond-life-photo {
+    width: 29.75%;
+    height: 425px;
+}
+
+.float-left {
+    margin-left: 5%;
+    margin-right: auto;
+    --photo-rotation: -1deg;
+}
+
+.float-right {
+    margin-left: auto;
+    margin-right: 5%;
+    --photo-rotation: 1deg;
+}
+
+.building-collage {
+    position: relative;
+    min-height: min(110vh, 1200px);
+    overflow: hidden;
+}
+
+.end-building {
+    position: absolute;
+    inset: 0 0 0 auto;
+    z-index: 0;
+    width: 72%;
+    height: 100%;
+    --photo-rotation: 0deg;
+}
+
+.end-building img {
+    object-fit: contain;
+    object-position: center bottom;
+}
+
+.building-notes,
+.building-eight,
+.building-street-photo {
+    position: absolute;
+    height: auto;
+    --photo-rotation: 0deg;
+}
+
+.building-notes {
+    z-index: 2;
+    top: 24%;
+    right: 4%;
+    width: 31%;
+    height: 52%;
+}
+
+.building-eight {
+    z-index: 1;
+    top: 12%;
+    right: 15%;
+    width: 30%;
+    height: 35%;
+    --photo-rotation: -4deg;
+}
+
+.building-street-photo {
+    z-index: 3;
+    top: 78%;
+    right: 7%;
+    width: 30%;
+    height: 20%;
+    --photo-rotation: 2deg;
+}
+
+.building-notes img,
+.building-eight img,
+.building-street-photo img {
+    object-fit: contain;
+    object-position: center;
+}
+
+@media (max-width: 700px) {
+    .background-arrow {
+        width: clamp(160px, 44vw, 300px);
+        opacity: 0.1;
+    }
+
+    .arrow-one {
+        top: 10vh;
+        left: -8%;
+    }
+
+    .arrow-two {
+        top: 120vh;
+        right: -9%;
+    }
+
+    .arrow-three {
+        top: 235vh;
+        left: -8%;
+    }
+
+    .arrow-four {
+        top: 345vh;
+        right: -8%;
+    }
+
+    .road-marking {
+        left: 43%;
+        width: 23px;
+    }
+
+    .road-marking::before,
+    .road-marking::after {
+        width: 8px;
+        background: repeating-linear-gradient(
+            to bottom,
+            #111 0,
+            #111 115px,
+            transparent 115px,
+            transparent 200px
+        );
+    }
+
+    .opening {
+        min-height: 100svh;
+        padding: 5vh 4vw;
+    }
+
+    .opening-photo {
+        width: 90vw;
+        height: 58svh;
+        min-height: 320px;
+    }
+
+    .opening-pondlife {
+        width: 82vw;
+        height: 42svh;
+    }
+
+    .photo-sequence {
+        padding: 2vh 0 3vh;
+    }
+
+    .photo-one {
+        width: 36%;
+        height: 360px;
+        margin: 0 0 4vh 4%;
+    }
+
+    .photo-two {
+        width: 36%;
+        height: 420px;
+        margin: 0 4% 4vh auto;
+    }
+
+    .photo-four {
+        width: 77%;
+        height: 410px;
+        margin: 0 4% 4vh auto;
+    }
+
+    .photo-five {
+        width: 36%;
+        height: 360px;
+        margin: 0 4% 3vh auto;
+    }
+
+    .crossroads {
+        min-height: 68svh;
+        padding: 2vh 0;
+    }
+
+    .crossroads::before {
+        height: 42vh;
+        background-image:
+            repeating-linear-gradient(45deg, transparent 0 28px, #111 28px 33px),
+            repeating-linear-gradient(-45deg, transparent 0 28px, #111 28px 33px);
+    }
+
+    .cross-street {
+        height: 48svh;
+        padding: 1rem 32vw;
+    }
+
+    .poem-credit {
+        padding: 2vh 4vw 3vh;
+    }
+
+    .poem-credit h2 {
+        grid-template-columns: 36% 44%;
+        font-size: clamp(2rem, 8vw, 4rem);
+    }
+
+    .title-fragment-second {
+        margin-top: 1.35em;
+    }
+
+    .poem-credit p {
+        width: 44%;
+        margin-right: 4vw;
+        font-size: clamp(0.9rem, 3.5vw, 1.25rem);
+    }
+
+    .cross-street-spacer {
+        flex-basis: 32vw;
+    }
+
+    .crossing-photo {
+        flex-basis: 78vw;
+        width: 78vw;
+        height: 44svh;
+    }
+
+    .floating-photo {
+        width: 36%;
+        height: 320px;
+        margin-bottom: 3vh;
+    }
+
+    .subway-photo-pair {
+        width: 92%;
+        margin-bottom: 3vh;
+    }
+
+    .subway-photo-pair .photo {
+        width: 48%;
+        height: 320px;
+    }
+
+    .subway-photo-pair .photo:first-child {
+        width: 42%;
+        margin-left: -3%;
+    }
+
+    .street-photo-pair {
+        width: 92%;
+        margin-bottom: 3vh;
+    }
+
+    .street-photo-pair .photo {
+        width: 42%;
+    }
+
+    .pink-spray-photo {
+        left: 4%;
+        bottom: 3%;
+        width: 51.84%;
+        height: 460.8px;
+    }
+
+    .tissue-photo {
+        left: 8%;
+        bottom: 65%;
+        width: 40%;
+        height: 18%;
+    }
+
+    .pond-life-photo {
+        width: 30.6%;
+        height: 272px;
+    }
+
+    .float-left {
+        margin-left: 4%;
+        margin-right: auto;
+    }
+
+    .float-right {
+        margin-left: auto;
+        margin-right: 4%;
+    }
+
+    .building-collage {
+        min-height: 110svh;
+    }
+
+    .end-building {
+        left: 22%;
+        right: 0;
+        width: 78%;
+        height: 70%;
+        bottom: auto;
+    }
+
+    .building-notes {
+        top: auto;
+        right: 4%;
+        bottom: 20%;
+        width: 48%;
+        height: 33%;
+    }
+
+    .building-eight {
+        top: 52%;
+        right: 24%;
+        width: 42%;
+        height: 30%;
+    }
+
+    .building-street-photo {
+        top: 82%;
+        right: 4%;
+        width: 42%;
+        height: 17%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .cross-street {
+        scroll-behavior: auto;
+    }
+
+    .photo,
+    .has-scroll-reveal .photo {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
