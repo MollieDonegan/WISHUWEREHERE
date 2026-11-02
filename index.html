@@ -177,6 +177,10 @@
 
         const photos = document.querySelectorAll("[data-scroll-image]");
         const crossStreet = document.querySelector(".cross-street");
+        const poemCredit = document.querySelector(".poem-credit");
+        const poemTitle = poemCredit?.querySelector("h2");
+        const poemAuthor = poemCredit?.querySelector("p");
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         if ("IntersectionObserver" in window) {
             document.documentElement.classList.add("has-scroll-reveal");
@@ -194,6 +198,34 @@
 
         if (crossStreet) {
             crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
+        }
+
+        if (poemCredit && poemTitle && poemAuthor && !reduceMotion) {
+            let scrollUpdateQueued = false;
+
+            const updatePoemMotion = () => {
+                const bounds = poemCredit.getBoundingClientRect();
+                const progress = Math.max(0, Math.min(1,
+                    (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)
+                ));
+                const scale = 1 - progress * 0.35;
+                const moveDown = progress * 120;
+
+                poemTitle.style.transform = `translateY(${moveDown}px) scale(${scale})`;
+                poemAuthor.style.transform = `translateY(${moveDown}px) scale(${scale}) rotate(-1deg)`;
+                scrollUpdateQueued = false;
+            };
+
+            const queuePoemMotionUpdate = () => {
+                if (!scrollUpdateQueued) {
+                    scrollUpdateQueued = true;
+                    window.requestAnimationFrame(updatePoemMotion);
+                }
+            };
+
+            window.addEventListener("scroll", queuePoemMotionUpdate, { passive: true });
+            window.addEventListener("resize", queuePoemMotionUpdate);
+            updatePoemMotion();
         }
     </script>
 </body>
