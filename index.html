@@ -6,6 +6,25 @@
     <meta name="theme-color" content="#ffffff">
     <title>Visual Essay</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        .benchfriends-photo {
+            position: absolute;
+            z-index: 2;
+            top: clamp(40px, 8vh, 90px);
+            right: 7%;
+            width: 30%;
+            height: clamp(280px, 34vw, 420px);
+        }
+
+        @media (max-width: 700px) {
+            .benchfriends-photo {
+                top: 24px;
+                right: 4%;
+                width: 40%;
+                height: 260px;
+            }
+        }
+    </style>
 </head>
 <body>
     <main class="street">
@@ -42,6 +61,10 @@
         <section class="photo-sequence" aria-label="Photographs along the street">
             <figure class="photo photo-one" data-scroll-image>
                 <img src="./beatlescd.jpg" alt="A notebook resting on a city park bench" loading="lazy" decoding="async">
+            </figure>
+
+            <figure class="photo benchfriends-photo" data-scroll-image>
+                <img src="./benchfriends.jpg" alt="Friends sitting together on a park bench" loading="lazy" decoding="async">
             </figure>
 
             <figure class="photo photo-two" data-scroll-image>
