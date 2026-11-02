@@ -63,7 +63,7 @@
             </div>
 
             <div class="street-photo-pair">
-                <figure class="photo" data-scroll-image>
+                <figure class="photo tennisball-photo" data-scroll-image>
                     <img src="./tennisballman.jpg" alt="A person using a walker fitted with tennis balls" loading="lazy" decoding="async">
                 </figure>
 
@@ -112,121 +112,6 @@
                 <div class="cross-street-spacer" aria-hidden="true"></div>
             </div>
         </section>
-
-        <section class="poem-credit" aria-label="Poem title and author">
-            <h2>
-                <span class="title-fragment title-fragment-first">Having a Coke</span>
-                <span class="title-fragment title-fragment-second">with You</span>
-            </h2>
-            <p>Frank O’Hara</p>
-        </section>
-
-        <section class="photo-sequence ending-sequence" aria-label="More photographs along the street">
-            <figure class="photo floating-photo float-left" data-scroll-image>
-                <img src="./cut%20up%20me.jpg" alt="A person resting on a bed in a bedroom" loading="lazy" decoding="async">
-            </figure>
-
-            <figure class="photo floating-photo float-right" data-scroll-image>
-                <img src="./IMG_4381.jpg" alt="A printed neighborhood poster on a white background" loading="lazy" decoding="async">
-            </figure>
-
-            <figure class="photo floating-photo float-left" data-scroll-image>
-                <img src="./police%20and%20interiro.jpg" alt="A police car paired with interior diagrams in a photo collage" loading="lazy" decoding="async">
-            </figure>
-
-            <figure class="photo floating-photo float-left" data-scroll-image>
-                <img src="./eun.jpg" alt="Handwritten reflection about a neighbor named Eun" loading="lazy" decoding="async">
-            </figure>
-
-            <figure class="photo floating-photo float-right" data-scroll-image>
-                <img src="./updatestep.jpg" alt="Updated photograph of a New York stoop and steps" loading="lazy" decoding="async">
-            </figure>
-
-            <div class="building-collage">
-                <figure class="photo end-building" data-scroll-image>
-                    <img src="./bigbuildings.jpg" alt="A cutout view looking up at city skyscrapers" loading="lazy" decoding="async">
-                </figure>
-
-                <figure class="photo building-notes" data-scroll-image>
-                    <img src="./bigbuildingnote%20copy.jpg" alt="Handwritten notes reflecting on New York's towering buildings" loading="lazy" decoding="async">
-                </figure>
-
-                <figure class="photo building-eight" data-scroll-image>
-                    <img src="./0008.jpg" alt="A printed image of the New York skyline" loading="lazy" decoding="async">
-                </figure>
-
-                <figure class="photo building-street-photo" data-scroll-image>
-                    <img src="./33740034.jpg" alt="Tall city buildings seen from street level" loading="lazy" decoding="async">
-                </figure>
-
-                <figure class="photo pink-spray-photo" data-scroll-image>
-                    <img src="./pinkspray.jpg" alt="Pink spray paint across two textured heart shapes" loading="lazy" decoding="async">
-                </figure>
-
-                <figure class="photo tissue-photo" data-scroll-image>
-                    <img src="./tissue%20copy.jpg" alt="A tissue lying on a city sidewalk" loading="lazy" decoding="async">
-                </figure>
-            </div>
-        </section>
     </main>
-
-    <script>
-        if (!window.location.hash) {
-            window.scrollTo(0, 0);
-        }
-
-        const photos = document.querySelectorAll("[data-scroll-image]");
-        const crossStreet = document.querySelector(".cross-street");
-        const poemCredit = document.querySelector(".poem-credit");
-        const poemTitle = poemCredit?.querySelector("h2");
-        const poemAuthor = poemCredit?.querySelector("p");
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-        if ("IntersectionObserver" in window) {
-            document.documentElement.classList.add("has-scroll-reveal");
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    entry.target.classList.toggle("is-visible", entry.isIntersecting);
-                });
-            }, {
-                threshold: 0.15
-            });
-
-            photos.forEach((photo) => observer.observe(photo));
-        }
-
-        if (crossStreet) {
-            crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
-        }
-
-        if (poemCredit && poemTitle && poemAuthor && !reduceMotion) {
-            let scrollUpdateQueued = false;
-
-            const updatePoemMotion = () => {
-                const bounds = poemCredit.getBoundingClientRect();
-                const progress = Math.max(0, Math.min(1,
-                    (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)
-                ));
-                const scale = 1 - progress * 0.35;
-                const moveDown = progress * 120;
-
-                poemTitle.style.transform = `translateY(${moveDown}px) scale(${scale})`;
-                poemAuthor.style.transform = `translateY(${moveDown}px) scale(${scale}) rotate(-1deg)`;
-                scrollUpdateQueued = false;
-            };
-
-            const queuePoemMotionUpdate = () => {
-                if (!scrollUpdateQueued) {
-                    scrollUpdateQueued = true;
-                    window.requestAnimationFrame(updatePoemMotion);
-                }
-            };
-
-            window.addEventListener("scroll", queuePoemMotionUpdate, { passive: true });
-            window.addEventListener("resize", queuePoemMotionUpdate);
-            updatePoemMotion();
-        }
-    </script>
 </body>
 </html>
