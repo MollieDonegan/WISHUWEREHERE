@@ -106,7 +106,7 @@
                 </figure>
 
                 <figure class="photo crossing-photo" data-scroll-image>
-                    <img src="./buildings.jpg" alt="Workers on scaffolding beside a brick building" loading="lazy" decoding="async">
+                    <img src="" alt="Workers on scaffolding beside a brick building" loading="lazy" decoding="async">
                 </figure>
 
                 <div class="cross-street-spacer" aria-hidden="true"></div>
@@ -127,7 +127,7 @@
             </figure>
 
             <figure class="photo floating-photo float-right" data-scroll-image>
-                <img src="./0008.jpg" alt="A printed neighborhood poster on a white background" loading="lazy" decoding="async">
+                <img src="" alt="A printed neighborhood poster on a white background" loading="lazy" decoding="async">
             </figure>
 
             <figure class="photo floating-photo float-left" data-scroll-image>
@@ -139,7 +139,7 @@
             </figure>
 
             <figure class="photo floating-photo float-right" data-scroll-image>
-                <img src="./updated%20hand%20copy.jpg" alt="Updated photograph of a New York stoop and steps" loading="lazy" decoding="async">
+                <img src="" alt="Updated photograph of a New York stoop and steps" loading="lazy" decoding="async">
             </figure>
 
             <div class="building-collage">
@@ -195,6 +195,10 @@
         if (crossStreet) {
             crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
         }
+
+        document.querySelectorAll('img[src=""]').forEach((img) => {
+            img.style.display = 'none';
+        });
     </script>
 </body>
 </html>
