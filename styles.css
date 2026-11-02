@@ -363,6 +363,10 @@ body {
     margin-left: -2%;
 }
 
+.street-photo-pair .photo:has(img[src="./tennisballman.jpg"]) {
+    left: -32px;
+}
+
 .pink-spray-photo {
     position: absolute;
     z-index: 4;
@@ -626,6 +630,10 @@ body {
 
     .street-photo-pair .photo:first-child {
         margin-left: -2%;
+    }
+
+    .street-photo-pair .photo:has(img[src="./tennisballman.jpg"]) {
+        left: -18px;
     }
 
     .pink-spray-photo {
