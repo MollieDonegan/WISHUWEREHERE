@@ -363,8 +363,8 @@ body {
     margin-left: -2%;
 }
 
-.street-photo-pair .photo:has(img[src="./tennisballman.jpg"]) {
-    left: -32px;
+.street-photo-pair .tennisball-photo {
+    translate: -36px 0;
 }
 
 .pink-spray-photo {
@@ -632,8 +632,8 @@ body {
         margin-left: -2%;
     }
 
-    .street-photo-pair .photo:has(img[src="./tennisballman.jpg"]) {
-        left: -18px;
+    .street-photo-pair .tennisball-photo {
+        translate: -22px 0;
     }
 
     .pink-spray-photo {
