@@ -359,6 +359,10 @@ body {
     aspect-ratio: 3 / 2;
 }
 
+.street-photo-pair .photo:first-child {
+    margin-left: -2%;
+}
+
 .pink-spray-photo {
     position: absolute;
     z-index: 4;
@@ -618,6 +622,10 @@ body {
 
     .street-photo-pair .photo {
         width: 42%;
+    }
+
+    .street-photo-pair .photo:first-child {
+        margin-left: -2%;
     }
 
     .pink-spray-photo {
