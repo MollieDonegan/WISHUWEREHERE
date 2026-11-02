@@ -6,25 +6,6 @@
     <meta name="theme-color" content="#ffffff">
     <title>Visual Essay</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .benchfriends-photo {
-            position: absolute;
-            z-index: 2;
-            top: clamp(40px, 8vh, 90px);
-            right: 7%;
-            width: 30%;
-            height: clamp(280px, 34vw, 420px);
-        }
-
-        @media (max-width: 700px) {
-            .benchfriends-photo {
-                top: 24px;
-                right: 4%;
-                width: 40%;
-                height: 260px;
-            }
-        }
-    </style>
 </head>
 <body>
     <main class="street">
@@ -46,8 +27,13 @@
 
         <section class="opening" aria-label="Opening photograph">
             <figure class="photo opening-photo" data-scroll-image>
-                <img src="./camera%20copy.jpg" alt="A street scene viewed from the camera" fetchpriority="high" decoding="async">
+                <img
+                    src="./camera%20copy.jpg"
+                    alt="A street scene viewed from the camera"
+                    fetchpriority="high"
+                    decoding="async">
             </figure>
+
             <figure class="photo opening-pondlife" data-scroll-image>
                 <img src="./pondlife.jpg" alt="Handwritten reflection about surveillance in Brooklyn" loading="eager" decoding="async">
             </figure>
@@ -57,29 +43,34 @@
             <figure class="photo photo-one" data-scroll-image>
                 <img src="./beatlescd.jpg" alt="A notebook resting on a city park bench" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo benchfriends-photo" data-scroll-image>
-                <img src="./benchfriends.jpg" alt="Friends sitting together on a park bench" loading="lazy" decoding="async">
+                <img src="./benchfriends.jpg" alt="Friends sitting together on a bench" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo photo-two" data-scroll-image>
                 <img src="./sur%20copy.jpg" alt="A person and belongings on a city sidewalk" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-left" data-scroll-image>
                 <img src="./33350033.JPG" alt="A neon-lit storefront at night" loading="lazy" decoding="async">
             </figure>
 
             <div class="subway-photo-pair">
-                <figure class="photo" data-scroll-image>
+                <figure class="photo subway-car-photo" data-scroll-image>
                     <img src="./updatedsubway.jpg" alt="Passengers riding a subway car" loading="lazy" decoding="async">
                 </figure>
-                <figure class="photo" data-scroll-image>
+
+                <figure class="photo subway-hand-photo" data-scroll-image>
                     <img src="./updated%20hand%20copy.jpg" alt="A hand resting on a seat inside a subway car" loading="lazy" decoding="async">
                 </figure>
             </div>
 
             <div class="street-photo-pair">
-                <figure class="photo tennisball-photo" data-scroll-image>
+                <figure class="photo" data-scroll-image>
                     <img src="./tennisballman.jpg" alt="A person using a walker fitted with tennis balls" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo" data-scroll-image>
                     <img src="./red%20copy.jpg" alt="A person with red hair sitting on a city stairway" loading="lazy" decoding="async">
                 </figure>
@@ -88,12 +79,15 @@
             <figure class="photo floating-photo float-right" data-scroll-image>
                 <img src="./gratis.jpg" alt="A free item sign on a city street" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-right" data-scroll-image>
                 <img src="./meme%20copy.jpg" alt="A surveillance-themed street artwork" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-left" data-scroll-image>
                 <img src="./open.jpg" alt="A glowing open sign outside a storefront" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-right" data-scroll-image>
                 <img src="./bump.jpg" alt="People sitting along a row of park benches" loading="lazy" decoding="async">
             </figure>
@@ -102,18 +96,23 @@
         <section class="crossroads" aria-label="Street crossing photo gallery">
             <div class="cross-street" tabindex="0" aria-label="Photo gallery. Scroll or swipe horizontally to explore.">
                 <div class="cross-street-spacer" aria-hidden="true"></div>
+
                 <figure class="photo crossing-photo" data-scroll-image>
                     <img src="./croppededitcoke.jpg" alt="A city building entrance and steps" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo crossing-photo" data-scroll-image>
-                    <img src="./bed.jpg" alt="A bed and personal belongings arranged beside the street" loading="lazy" decoding="async">
+                    <img src="./home%20cut%20out.jpg" alt="A bed and personal belongings arranged beside the street" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo crossing-photo" data-scroll-image>
                     <img src="./hostile.jpg" alt="A security camera mounted on a stone building" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo crossing-photo" data-scroll-image>
                     <img src="./work.jpg" alt="Workers on scaffolding beside a brick building" loading="lazy" decoding="async">
                 </figure>
+
                 <div class="cross-street-spacer" aria-hidden="true"></div>
             </div>
         </section>
@@ -130,15 +129,19 @@
             <figure class="photo floating-photo float-left" data-scroll-image>
                 <img src="./cut%20up%20me.jpg" alt="A person resting on a bed in a bedroom" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-right" data-scroll-image>
                 <img src="./IMG_4381.jpg" alt="A printed neighborhood poster on a white background" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-left" data-scroll-image>
                 <img src="./police%20and%20interiro.jpg" alt="A police car paired with interior diagrams in a photo collage" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-left" data-scroll-image>
                 <img src="./eun.jpg" alt="Handwritten reflection about a neighbor named Eun" loading="lazy" decoding="async">
             </figure>
+
             <figure class="photo floating-photo float-right" data-scroll-image>
                 <img src="./updatestep.jpg" alt="Updated photograph of a New York stoop and steps" loading="lazy" decoding="async">
             </figure>
@@ -147,65 +150,54 @@
                 <figure class="photo end-building" data-scroll-image>
                     <img src="./bigbuildings.jpg" alt="A cutout view looking up at city skyscrapers" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo building-notes" data-scroll-image>
-                    <img src="./bigbuilding-notes.jpg" alt="Handwritten notes reflecting on New York's towering buildings" loading="lazy" decoding="async">
+                    <img src="./bigbuildingnote%20copy.jpg" alt="Handwritten notes reflecting on New York's towering buildings" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo building-eight" data-scroll-image>
                     <img src="./0008.jpg" alt="A printed image of the New York skyline" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo building-street-photo" data-scroll-image>
                     <img src="./33740034.jpg" alt="Tall city buildings seen from street level" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo pink-spray-photo" data-scroll-image>
                     <img src="./pinkspray.jpg" alt="Pink spray paint across two textured heart shapes" loading="lazy" decoding="async">
                 </figure>
+
                 <figure class="photo tissue-photo" data-scroll-image>
-                    <img src="./tissue.jpg" alt="A tissue lying on a city sidewalk" loading="lazy" decoding="async">
+                    <img src="./tissue%20copy.jpg" alt="A tissue lying on a city sidewalk" loading="lazy" decoding="async">
                 </figure>
             </div>
         </section>
     </main>
 
     <script>
-        if (!window.location.hash) window.scrollTo(0, 0);
+        if (!window.location.hash) {
+            window.scrollTo(0, 0);
+        }
 
         const photos = document.querySelectorAll("[data-scroll-image]");
         const crossStreet = document.querySelector(".cross-street");
-        const poemCredit = document.querySelector(".poem-credit");
-        const poemTitle = poemCredit?.querySelector("h2");
-        const poemAuthor = poemCredit?.querySelector("p");
-        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
         if ("IntersectionObserver" in window) {
             document.documentElement.classList.add("has-scroll-reveal");
+
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => entry.target.classList.toggle("is-visible", entry.isIntersecting));
-            }, { threshold: 0.15 });
+                entries.forEach((entry) => {
+                    entry.target.classList.toggle("is-visible", entry.isIntersecting);
+                });
+            }, {
+                threshold: 0.15
+            });
+
             photos.forEach((photo) => observer.observe(photo));
         }
 
-        if (crossStreet) crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
-
-        if (poemCredit && poemTitle && poemAuthor && !reduceMotion) {
-            let queued = false;
-            const updatePoem = () => {
-                const bounds = poemCredit.getBoundingClientRect();
-                const progress = Math.max(0, Math.min(1, (window.innerHeight - bounds.top) / (window.innerHeight + bounds.height)));
-                const scale = 1 - progress * 0.35;
-                const moveDown = progress * 120;
-                poemTitle.style.transform = `translateY(${moveDown}px) scale(${scale})`;
-                poemAuthor.style.transform = `translateY(${moveDown}px) scale(${scale}) rotate(-1deg)`;
-                queued = false;
-            };
-            const queueUpdate = () => {
-                if (!queued) {
-                    queued = true;
-                    window.requestAnimationFrame(updatePoem);
-                }
-            };
-            window.addEventListener("scroll", queueUpdate, { passive: true });
-            window.addEventListener("resize", queueUpdate);
-            updatePoem();
+        if (crossStreet) {
+            crossStreet.scrollLeft = (crossStreet.scrollWidth - crossStreet.clientWidth) / 2;
         }
     </script>
 </body>
